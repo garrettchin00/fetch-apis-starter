@@ -170,11 +170,11 @@ function displayData(data){
 
 			// add the weather for each date to the page with the information listed in comments above
 			forecastHTML += `<section class="day">
-								<h3><span>${"TO DO - Add the day of the week (full name)"}</span> ${"TO DO - add the month (full name)"} ${"TO DO - add the day of the month (numerical)"}</h3>
-								<img src="${"TO DO - Add the icon from the conditions object above based on the weather code for this day"}" alt="${"TO DO - add the description of the weather on this day from the conditions object above based on the weather code"}">
-								<p><b>High: </b>${"TO DO - add the high temperature for this day without any decimal places"}</p>
-								<p><b>Low: </b>${"TO DO - add the high temperature for this day without any decimal places"}</p>
-								<p>${"TO DO - add the description of the weather on this day from the conditions object above based on the weather code"}</p>
+								<h3><span>${date.toLocaleString("en-us", {weekday: "long"})}</span> ${date.toLocaleString("en-us", {month: "long"})} ${date.getDate()}</h3>
+								<img src="${conditions[data.daily.weather_code[i]].path}" alt="${conditions[data.daily.weather_code[i]].desc}">
+								<p><b>High: </b>${Math.round(data.daily.temperature_2m_max[i])}</p>
+								<p><b>Low: </b>${Math.round(data.daily.temperature_2m_min[i])}</p>
+								<p>${conditions[data.daily.weather_code[i]].desc}</p>
 							</section>`;
 		}
 	// add the complete upcoming forecast to the page
