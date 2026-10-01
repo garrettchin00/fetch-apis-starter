@@ -166,7 +166,7 @@ function displayData(data){
 		//the upcoming forecast
 		for(let i = 0; i < 8; i++){
 			// generate a date object from the given date for this day in the forecast
-			let date; // TO DO - create a new date object using the information returned by the API
+			let date = new Date(data.daily.time[i]); // - create a new date object using the information returned by the API
 
 			// add the weather for each date to the page with the information listed in comments above
 			forecastHTML += `<section class="day">
