@@ -147,15 +147,15 @@ function displayData(data){
 
 	// if we got an error in response, display that to the page/user
 	if(data.error){
-		current.innerHTML = `<p>There was an error: ${"TO DO - ADD ERROR MESSAGE"}. Please try again later.</p>`;
+		current.innerHTML = `<p>There was an error: ${data.reason}. Please try again later.</p>`;
 	}else{
 		// if there were no errors, let's add the weather to the page
 		let today = new Date();
 		//the current weather
-		let currentHTML = `<h3>${"TO DO - ADD LOCATION NAME"}</h3>
-							<p>${"TO DO - Add the day of the week (full name)"}, ${"TO DO - add the month (full name)"} ${"TO DO - add the day of the month (numerical)"}</p>
-							<img src="${"TO DO - Add the icon from the conditions object above based on the weather code for this day"}" alt="${"TO DO - add the description of the weather on this day from the conditions object above based on the weather code"}">
-							<p><b>Current Weather: </b>${"TO DO - add the temperature without any decimal places"}&deg; and ${"TO DO - add the description of the weather on this day from the conditions object above based on the weather code"}</p>
+		let currentHTML = `<h3>${data.timezone}</h3>
+							<p>${today.toLocaleString("en-us", {weekday: "long"})}, ${today.toLocaleString("en-us", {month: "long"})} ${today.getDate()}</p>
+							<img src="${conditions[data.current.weather_code].path}" alt="${conditions[data.current.weather_code].desc}">
+							<p><b>Current Weather: </b>${Math.round(data.current.temperature_2m)}&deg; and ${conditions[data.current.weather_code].desc}</p>
 							`;
 		// add the current weather information to the page
 		current.innerHTML = currentHTML;
